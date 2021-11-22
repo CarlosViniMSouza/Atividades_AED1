@@ -2,19 +2,9 @@
 
 const int NUM = 10;
 
-void inic(int s[]) {
-
-  int i;
-  for(i = 0; i < NUM; i++) {
-    s[i] = 0;
-  }
-}
-
 int main() {
 
   int v[NUM], i;
-
-  inic(v);
 
   for(i = 0; i < NUM + 1; i++) {
     v[i] = i;
