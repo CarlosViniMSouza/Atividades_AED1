@@ -1,9 +1,15 @@
 #include <stdio.h>
 
-int main() {
+int x, *Px = &x;
+float y, *Py = &y;
 
-  int x = 5, *Px = &x;
-  float y = 5.0, *Py = &y;
+void InserirNumeros() {
+
+  printf("Insira um numero (do tipo inteiro): ");
+  scanf("%d", &x);
+
+  printf("Insira um numero (do tipo float): ");
+  scanf("%f", &y);
 
   printf("Endereco de %d: %ld\n", x, Px);
   printf("Proximo Endereco de %d: %ld\n", x, (Px + 1));
@@ -16,4 +22,9 @@ int main() {
 
   printf("\n(Em Hexadecimal) Endereco de %.2f: %x", y, Py);
   printf("\n(Em Hexadecimal) Proximo Endereco de %.2f: %x", y, (Py + 1));
+}
+
+int main() {
+
+  InserirNumeros();
 }
