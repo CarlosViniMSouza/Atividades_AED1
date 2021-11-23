@@ -60,9 +60,12 @@ TLista* inserir(Tlista* lista) {
 }
 
 TLista* inserirFim(TLista* lista, int elemento) {
-
+  
+  TLista* novoNO;
   TLista* novoNO = (TLista*) malloc(sizeof(TLista));
+
   novoNO -> numero = elemento;
   novoNO -> proximo = lista;
+
   return novoNO;
 }
