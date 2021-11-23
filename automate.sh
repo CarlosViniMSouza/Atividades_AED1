@@ -1,6 +1,6 @@
-cd Livro-Test #acessar o diretorio necessario
+cd Aula #acessar o diretorio necessario
 
-gcc Model5.c -o aula #fazer a compilacao do arquivo '.c'
+gcc ListaEncadeadaAula2.c -o aula #fazer a compilacao do arquivo '.c'
 
 ./aula #chamar o executavel
 

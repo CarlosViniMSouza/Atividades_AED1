@@ -11,7 +11,7 @@ typedef struct NO {
 
   //Ponteiro que indicara o prox. No da lista.
   struct NO *proximo;
-} TLista //Indica um Tipo Lista Encadeada;
+} TLista; //Indica um Tipo Lista Encadeada;
 
 TLista* inicializar();
 TLista* inserir(TLista* lista);
@@ -41,7 +41,7 @@ TLista* inicializar() {
   return NULL;
 }
 
-TLista* inserir(Tlista* lista) {
+TLista* inserir(TLista* lista) {
 
   int i, elemento, quantidade;
 
