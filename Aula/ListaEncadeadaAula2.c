@@ -14,8 +14,23 @@ typedef struct NO {
 } TLista //Indica um Tipo Lista Encadeada;
 
 TLista* inicializar();
-TLista* inserir(TLista * lista);
+TLista* inserir(TLista* lista);
+TLista* inserirFim(TLista* lista, int elemento);
+void exibirLista(TLista* lista);
 
 int main() {
 
+  int i, quant;
+  TLista *lista;
+
+  lista = inicializar();
+  lista = inserir(lista);
+  
+  exibirLista(lista);
+}
+
+// Cria e Inicializa um Lista Encadeada Simples.
+TLista* inicializar() {
+
+  return NULL;
 }
