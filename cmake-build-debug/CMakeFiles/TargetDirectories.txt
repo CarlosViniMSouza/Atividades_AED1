@@ -1,3 +1,0 @@
-E:/EngSoftware_IFAM/Sem02_AED1/Atvs/cmake-build-debug/CMakeFiles/AED1.dir
-E:/EngSoftware_IFAM/Sem02_AED1/Atvs/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/EngSoftware_IFAM/Sem02_AED1/Atvs/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -31,7 +31,7 @@ int main() {
   //Retorna o endereco do ultimo elemento inserido na lista.
   lista = inserir(lista);
 
-  exibirLista(lista);
+  //exibirLista(lista);
 }
 
 // Cria e Inicializa uma Lista Encadeada Simples.
@@ -62,7 +62,7 @@ TLista* inserir(TLista* lista) {
 TLista* inserirFim(TLista* lista, int elemento) {
   
   TLista* novoNO;
-  TLista* novoNO = (TLista*) malloc(sizeof(TLista));
+  novoNO = (TLista*) malloc(sizeof(TLista));
 
   novoNO -> numero = elemento;
   novoNO -> proximo = lista;
