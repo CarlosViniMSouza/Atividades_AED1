@@ -1,6 +1,6 @@
-cd Aula #acessar o diretorio necessario
+cd programas-teste #acessar o diretorio necessario
 
-gcc ListaEncadeadaAula2.c -o aula #fazer a compilacao do arquivo '.c'
+gcc ListaEncadeadaYT.c -o aula #fazer a compilacao do arquivo '.c'
 
 ./aula #chamar o executavel
 
