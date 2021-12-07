@@ -1,6 +1,6 @@
 cd programas-teste #acessar o diretorio necessario
 
-gcc ListaEncadeadaYT.c -o aula #fazer a compilacao do arquivo '.c'
+gcc test_Queue.c -o aula #fazer a compilacao do arquivo '.c'
 
 ./aula #chamar o executavel
 
