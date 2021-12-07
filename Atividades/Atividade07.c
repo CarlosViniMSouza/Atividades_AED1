@@ -1,9 +1,4 @@
 /*
-Matrícula: 111035
-Nome     : Benevaldo Pereira Gonçalves
-*/
-
-/*
 Assunto: Lista Encadeada Simples
 */
 
@@ -22,8 +17,7 @@ typedef struct NO {
 
 // ATENÇÃO
 // *  : Significa um ponteiro.
-// ** : Significa um ponteiro que aponta
-//      para outro ponteiro.
+// ** : Significa um ponteiro que aponta para outro ponteiro.
 
 void inicializar(TNO **inicio,TNO **fim);
 void inseriFim(TNO **inicio,TNO **fim);
@@ -37,72 +31,65 @@ void menu();
 int ObterOpcaoMenu();
 
 // Programa Principal
-int main()
-{
+int main() {
+
   setlocale(LC_ALL,"Portuguese");
   menu();
-}// Fim programa.
+}
 
 // Processa a opção selecionada no Menu
 void menu(){
+
   int opcao;
-  // Declarar os ponteiros para o
-  // início e fim da lista encadeada simples
+  // Declarar os ponteiros para o início e fim da lista encadeada simples.
   TNO *inicio;
   TNO *fim;
 
   // Inicializar os ponteiros início e fim
-  inicializar(&inicio,&fim);
+  inicializar(&inicio, &fim);
 
-  do{
+  do {
+
    opcao = ObterOpcaoMenu();
-   switch (opcao)
-   {
+
+   switch (opcao) {
+
      case 1:
-       inseriFim(&inicio,&fim);
-       break;
+       inseriFim(&inicio, &fim); break;
      case 2:
-       inseriInicio(&inicio,&fim);
-       break;
+       inseriInicio(&inicio, &fim); break;
      case 3:
-       exibirLista(inicio);
-       break;
+       exibirLista(inicio); break;
      case 4:
-       removeFim(&inicio,&fim);
-       break;
+       removeFim(&inicio, &fim); break;
      case 5:
-       removeInicio(&inicio,&fim);
-       break;
+       removeInicio(&inicio, &fim); break;
      case 6:
-       removerTodos(&inicio,&fim);
-       break;
+       removerTodos(&inicio,&fim); break;
      case 7:
-       calcularTamanhoByteLista(inicio);
-       break;
+       calcularTamanhoByteLista(inicio); break;
      case 8:
-       // Para sair do programa deve-se
-       // desalocar toda memória alocada.
+       // Para sair do programa deve-se desalocar toda memória alocada.
        removerTodos(&inicio,&fim);
-       printf("\n");
-       printf("\n***************************");
+       printf("\n\n***************************");
        printf("\n** Programa Finalizado.  **");
-       printf("\n***************************");
-       printf("\n");
+       printf("\n***************************\n");
        break;
 
      default:
-       printf("\n");
-       printf("\n*************************");
+       printf("\n\n*************************");
        printf("\n** Opção Inválida....  **");
-       printf("\n*************************");
-       printf("\n");
+       printf("\n*************************\n");
    }
-  }while( (opcao >= 1) && (opcao <8) );
+
+  } while((opcao >= 1) && (opcao < 8));
 }
 
 // Monta o Menu e obtem a opção selecionada
-int ObterOpcaoMenu(){
+int ObterOpcaoMenu() {
+
   int opcao;
+
   printf("\n");
   printf("************************************\n");
   printf("*    Lista Encadeada Simples       *\n");
@@ -118,224 +105,243 @@ int ObterOpcaoMenu(){
   printf("* [7] - Tamanho em bytes da lista  *\n");
   printf("* [8] - Sair                       *\n");
   printf("************************************\n");
+
   printf("Entre com a opcao = ");
   scanf("%d",&opcao);
   return opcao;
 }
 
-// Inicializa uma
-// Lista encadeada simples
-void inicializar(TNO **inicio,TNO **fim){
- // OBS: NULL é um valor que indica
- // um endereço de memória vazio.
- *inicio = NULL;
- *fim    = NULL;
+// Inicializa uma Lista Encadeada Simples:
+void inicializar(TNO **inicio,TNO **fim) {
+
+  // OBS: NULL é um valor que indica um endereço de memória vazio.
+  *inicio = NULL;
+  *fim    = NULL;
 }
 
-// Inseri um novo elemento no final da Lista
-void inseriFim(TNO **inicio,TNO **fim){
- int elemento;
- // Declarar novo NO
- TNO* novoNO;
- // Entrada do novo elemento
- printf("Novo Elemento = ");
- scanf("%d",&elemento);
- // Alocar memória dinamicamente
- novoNO = (TNO*) malloc(sizeof(TNO));
- // Verificar SE é o primeiro
- // elemento da Lista Encadeada Simples
- if( *inicio==NULL){
-    // Primeiro elemento da Lista Endadeada
-    // O ponteiro do início e do fim
-    // apontam para o mesmo elemento.
-    novoNO->numero  = elemento; //6
-    novoNO->proximo = NULL;
+// Inseri um novo elemento no final da Lista:
+void inseriFim(TNO **inicio,TNO **fim) {
+
+  int elemento;
+
+  // Declarar 1 novo NO
+  TNO* novoNO;
+  
+  // Entrada do novo elemento
+  printf("Novo Elemento = ");
+  scanf("%d",&elemento);
+
+  // Alocar memória dinamicamente
+  novoNO = (TNO*) malloc(sizeof(TNO));
+
+  // Verificar SE é o 1° elemento da Lista Encadeada Simples:
+  if(*inicio == NULL){
+
+    // Primeiro elemento da Lista Endadeada, o ponteiro do início e do fim apontam para o mesmo elemento.
+    novoNO -> numero  = elemento; //6
+    novoNO -> proximo = NULL;
     *inicio = novoNO;
     *fim    = novoNO;
- }else{
-    // Já existe elemento na lista,
-    // inseri no fim
-    novoNO->numero  = elemento; // 7,
-    novoNO->proximo = NULL;
-    (*fim)->proximo = novoNO;
+  } else {
+
+    // Já existe elemento na lista, inserir no fim:
+    novoNO -> numero  = elemento; // 7,
+    novoNO -> proximo = NULL;
+    (*fim) -> proximo = novoNO;
     *fim  = novoNO;
- }
+  }
 }
 
-// Inseri um novo elemento no início da Lista
-void inseriInicio(TNO **inicio,TNO **fim){
+// Inseri um novo elemento no início da Lista:
+void inseriInicio(TNO **inicio,TNO **fim) {
+
  int elemento;
  // Declarar novo NO
  TNO* novoNO;
+
  // Entrada do novo elemento
  printf("Novo Elemento = ");
  scanf("%d",&elemento);
+ 
  // Alocar memória dinamicamente
  novoNO = (TNO*) malloc(sizeof(TNO));
- // Verificar SE é o primeiro
- // elemento da Lista Encadeada Simples
+ 
+ // Verificar SE é o primeiro elemento da Lista Encadeada Simples
  if( *inicio==NULL){
-    // Primeiro elemento da Lista Endadeada
-    // O ponteiro do início e do fim
-    // apontam para o mesmo elemento.
-    novoNO->numero  = elemento;
-    novoNO->proximo = NULL;
+    
+    // Primeiro elemento da Lista Endadeada, o ponteiro do início e do fim apontam para o mesmo elemento.
+    novoNO -> numero  = elemento;
+    novoNO -> proximo = NULL;
     *inicio = novoNO;
     *fim    = novoNO;
- }else{
-    // Já existe elemento na lista,
-    // inseri no início
-    novoNO->numero  = elemento;
-    novoNO->proximo = *inicio;
+  } else {
+
+    // Já existe elemento na lista, inseri no início:
+    novoNO -> numero  = elemento;
+    novoNO -> proximo = *inicio;
     *inicio = novoNO;
- }
+  }
 }
 
 // Remove o elemento do fim da lista
 void removeFim(TNO **inicio,TNO **fim){
- TNO * ultimoNO    = NULL;
- TNO * penultimoNO = NULL;
+  
+  TNO * ultimoNO    = NULL;
+  TNO * penultimoNO = NULL;
 
- if(*inicio==NULL){
-   // Lista está fazia.
-   printf("\n");
-   printf("\n*************************");
-   printf("\n** Lista está vazia... **");
-   printf("\n*************************");
-   printf("\n");
- }else{
-   // Verificar SE existe apenas um elemento
-   if (*inicio == *fim){
-     // A lista só tem um elemento
-     ultimoNO = *fim;
-     *fim    = NULL;
-     *inicio = NULL;
-     // Remove NO e libera memória
-     free(ultimoNO);
-   }else{
-     // A lista tem mais de um elemento
-     // Navegar até o último elemento a partir
-     // do início da lista
-     ultimoNO = *inicio;
-     while( ultimoNO->proximo != NULL){
-       penultimoNO = ultimoNO;
-       ultimoNO    = ultimoNO->proximo;
-     }
-     // Chegou no último elemento que será removido
-     penultimoNO->proximo = NULL; // Novo fim da lista
-     *fim  = penultimoNO; // Aponta para o novo último elemento
-     // Remove NO e libera memória
-     free(ultimoNO);
-   }
- }
+  if(*inicio == NULL) {
+
+    // Lista está fazia.
+    printf("\n");
+    printf("\n*************************");
+    printf("\n** Lista está vazia... **");
+    printf("\n*************************");
+    printf("\n");
+  } else {
+
+    // Verificar SE existe apenas um elemento
+    if (*inicio == *fim){
+
+      // A lista só tem um elemento
+      ultimoNO = *fim;
+      *fim    = NULL;
+      *inicio = NULL;
+      
+      // Remove NO e libera memória
+      free(ultimoNO);
+    } else {
+      
+      // A lista tem mais de um elemento navegar até o último elemento a partir do início da lista
+      ultimoNO = *inicio;
+      while( ultimoNO->proximo != NULL) {
+
+        penultimoNO = ultimoNO;
+        ultimoNO    = ultimoNO->proximo;
+      }
+
+      // Chegou no último elemento que será removido
+      penultimoNO->proximo = NULL; // Novo fim da lista
+      *fim = penultimoNO;         // Aponta para o novo último elemento
+      
+      // Remove NO e libera memória
+      free(ultimoNO);
+    }
+  }
 }
 
 // Remove o primeiro elemento da Lista
-void removeInicio(TNO **inicio,TNO **fim){
- TNO * removerNO    = NULL;
+void removeInicio(TNO **inicio,TNO **fim) {
 
- if(*inicio==NULL){
-   // Lista está fazia.
-   printf("\n");
-   printf("\n*************************");
-   printf("\n** Lista está vazia... **");
-   printf("\n*************************");
-   printf("\n");
- }else{
-   // Verificar SE existe apenas
-   // um elemento na lista
-   if (*inicio == *fim){
-     // A lista só tem um elemento
-     removerNO = *inicio;
-     *inicio = NULL;
-     *fim    = NULL;
-     // Remove NO e libera memória
-     free(removerNO);
-   }else{
+  TNO *removerNO = NULL;
+
+  if(*inicio == NULL){
+
+    // Lista está fazia.
+    printf("\n\n*************************");
+    printf("\n** Lista está vazia... **");
+    printf("\n*************************\n");
+  } else {
+
+   // Verificar SE existe apenas um elemento na lista
+   if (*inicio == *fim) {
+
+      // A lista só tem um elemento
+      removerNO = *inicio;
+      *inicio = NULL;
+      *fim    = NULL;
+     
+      // Remove NO e libera memória
+      free(removerNO);
+    } else {
+
      // A lista tem mais de um elemento
      removerNO = *inicio;
      *inicio   = (*inicio)->proximo;
+
      // Remove NO e libera memória
      free(removerNO);
-   }
- }
+    }
+  }
 }
 
 // Remove todos os elmentos da lista
-void removerTodos(TNO **inicio,TNO **fim){
+void removerTodos(TNO **inicio, TNO **fim){
+ 
  TNO *remover;
  TNO *lista;
 
- if (inicio == NULL){
-   // Lista esta vazia
-   printf("\n");
-   printf("\n***********************");
-   printf("\n** Lista está vazia. **");
-   printf("\n***********************");
-   printf("\n");
- }else{
-   // Existe elemento na Lista
-   // Ponteiro para navegar na Lista
-   lista = *inicio;
-   while(lista != NULL){
-     remover = lista;
-     lista   = lista->proximo;
-     // Remover e desalocar memória
-     free(remover);
-   }
+ if(inicio == NULL) {
+
+    // Lista esta vazia
+    printf("\n\n***********************");
+    printf("\n** Lista está vazia. **");
+    printf("\n***********************\n");
+  } else {
+   
+    // Existe elemento Ponteiro na Lista para navegar
+    lista = *inicio;
+    
+    while(lista != NULL) {
+
+      remover = lista;
+      lista   = lista -> proximo;
+      
+      // Remover e desalocar memória
+      free(remover);
+    }
+
    // Reiniciar a lista
    *inicio = NULL;
    *fim    = NULL;
-   printf("\n");
-   printf("*************************************\n");
+   
+   printf("\n*************************************\n");
    printf(" Todos os elementos foram removidos. \n");
    printf("*************************************\n");
- }// if
+  }
 }
 
 // Exibe todos os elementos da lista
-void exibirLista(TNO *inicio){
- // Ponteiro para navegar na Lista
- if (inicio == NULL){
-   // Lista esta vazia
-   printf("\n");
-   printf("\n********************");
-   printf("\n** Lista vazia... **");
-   printf("\n********************");
-   printf("\n");
- }else{
-   // Existe elemento na Lista
-   printf("\n");
-   printf("*****************************************************\n");
-   printf("Lista todos os elementos a partir do início da Lista \n");
-   printf("*****************************************************\n");
-   while(inicio != NULL){
-    printf("Elemento = %d\n",inicio->numero);
-    inicio = inicio->proximo;
-   }
- }// if
-}// exibirLista
+void exibirLista(TNO *inicio) {
+  // Ponteiro para navegar na Lista
+  if(inicio == NULL) {
+    
+    // Lista esta vazia
+    printf("\n\n********************");
+    printf("\n** Lista vazia... **");
+    printf("\n********************\n");
+  } else {
 
-// Calcula a quntidade de bytes alocada
-// pela lista encadeada com os seus
-// respectivos marcadores de início e fim
-void calcularTamanhoByteLista(TNO *inicio){
- int tamPonteiroMarcador=0;
- int tamanhoByteLista=0;
- // O tamanho dos ponteiros marcadores
- // início e fim são iguais, por essa
- // razão multiplica-se por 2.
- tamPonteiroMarcador += ( sizeof(TNO) )*2;
- // Obter tamanho de bytes de todos os
- // elementos da lista
- while(inicio != NULL){
+    // Existe elemento na Lista
+    printf("\n*****************************************************\n");
+    printf("Lista todos os elementos a partir do início da Lista \n");
+    printf("*****************************************************\n");
+    
+    while(inicio != NULL) {
+      printf("Elemento = %d\n",inicio -> numero);
+      inicio = inicio -> proximo;
+    }
+  }
+}
+
+// Calcula a qtd de bytes alocada pela lista encadeada com os seus respectivos marcadores de início e fim
+void calcularTamanhoByteLista(TNO *inicio) {
+
+  int tamPonteiroMarcador=0;
+  int tamanhoByteLista=0;
+  
+  // O tamanho dos ponteiros marcadores início e fim são iguais, por essa razão multiplica-se por 2.
+  tamPonteiroMarcador += (sizeof(TNO))*2;
+
+  // Obter tamanho de bytes de todos os elementos da lista
+  while(inicio != NULL) {
+  
     tamanhoByteLista += sizeof(*inicio);
     inicio = inicio->proximo;
- }
- printf("\n");
- printf("************************************************\n");
- printf(" Ponteiro marcadores início e fim = %d baytes. *\n",tamPonteiroMarcador);
- printf(" A Lista Encadeada................= %d baytes. *\n",tamanhoByteLista);
- printf(" Total ...........................= %d baytes. *\n",tamPonteiroMarcador + tamanhoByteLista);
- printf("************************************************\n");
+  }
+
+  printf("\n************************************************\n");
+  printf(" Ponteiro marcadores início e fim = %d baytes. *\n", tamPonteiroMarcador);
+  printf(" A Lista Encadeada................= %d baytes. *\n", tamanhoByteLista);
+  printf(" Total ...........................= %d baytes. *\n", tamPonteiroMarcador + tamanhoByteLista);
+  printf("************************************************\n");
 }
