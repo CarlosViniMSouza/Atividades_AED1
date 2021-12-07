@@ -1,7 +1,9 @@
-cd programas-teste #acessar o diretorio necessario
+cd Atividades #acessar o diretorio necessario
 
-gcc test_Queue.c -o aula #fazer a compilacao do arquivo '.c'
+gcc Atividade07.c -o aula #fazer a compilacao do arquivo '.c'
 
 ./aula #chamar o executavel
 
 rm aula.exe
+
+pwd
