@@ -56,15 +56,15 @@ void menu(){
 
      case 1:
        inseriFim(&inicio, &fim); break;
-     case 3:
+     case 2:
        exibirLista(inicio); break;
-     case 5:
+     case 3:
        removeInicio(&inicio, &fim); break;
-     case 6:
+     case 4:
        removerTodos(&inicio,&fim); break;
-     case 7:
+     case 5:
        calcularTamanhoByteLista(inicio); break;
-     case 8:
+     case 6:
        // Para sair do programa deve-se desalocar toda memória alocada.
        removerTodos(&inicio,&fim);
        printf("\n\n***************************");
@@ -93,11 +93,11 @@ int ObterOpcaoMenu() {
   printf("*              Menu                *\n");
   printf("************************************\n");
   printf("* [1] - Inserir no fim             *\n");
-  printf("* [3] - Listar elementos           *\n");
-  printf("* [5] - Remover primeiro elemento  *\n");
-  printf("* [6] - Remover todos os elementos *\n");
-  printf("* [7] - Tamanho em bytes da lista  *\n");
-  printf("* [8] - Sair                       *\n");
+  printf("* [2] - Listar elementos           *\n");
+  printf("* [3] - Remover primeiro elemento  *\n");
+  printf("* [4] - Remover todos os elementos *\n");
+  printf("* [5] - Tamanho em bytes da lista  *\n");
+  printf("* [6] - Sair                       *\n");
   printf("************************************\n");
 
   printf("Entre com a opcao = ");
@@ -144,50 +144,6 @@ void inseriFim(TNO **inicio, TNO **fim) {
     novoNO -> proximo = NULL;
     (*fim) -> proximo = novoNO;
     *fim  = novoNO;
-  }
-}
-
-// Remove o elemento do fim da lista
-void removeFim(TNO **inicio,TNO **fim){
-  
-  TNO * ultimoNO    = NULL;
-  TNO * penultimoNO = NULL;
-
-  if(*inicio == NULL) {
-
-    // Lista está fazia.
-    printf("\n\n*************************");
-    printf("\n** Lista está vazia... **");
-    printf("\n*************************\n");
-  } else {
-
-    // Verificar SE existe apenas um elemento
-    if(*inicio == *fim){
-
-      // A lista só tem um elemento
-      ultimoNO = *fim;
-      *fim     = NULL;
-      *inicio  = NULL;
-      
-      // Remove NO e libera memória
-      free(ultimoNO);
-    } else {
-      
-      // A lista tem mais de um elemento navegar até o último elemento a partir do início da lista
-      ultimoNO = *inicio;
-      while(ultimoNO -> proximo != NULL) {
-
-        penultimoNO = ultimoNO;
-        ultimoNO    = ultimoNO -> proximo;
-      }
-
-      // Chegou no último elemento que será removido
-      penultimoNO -> proximo = NULL; // Novo fim da lista
-      *fim = penultimoNO;         // Aponta para o novo último elemento
-      
-      // Remove NO e libera memória
-      free(ultimoNO);
-    }
   }
 }
 
@@ -257,19 +213,20 @@ void removerTodos(TNO **inicio, TNO **fim){
    *fim    = NULL;
    
    printf("\n*************************************\n");
-   printf(" Todos os elementos foram removidos. \n");
+   printf("* Todos os elementos foram removidos. *\n");
    printf("*************************************\n");
   }
 }
 
 // Exibe todos os elementos da lista
 void exibirLista(TNO *inicio) {
+
   // Ponteiro para navegar na Lista
   if(inicio == NULL) {
     
     // Lista esta vazia
     printf("\n\n********************");
-    printf("\n** Lista vazia... **");
+    printf("\n**   ListaVazia   **");
     printf("\n********************\n");
   } else {
 
@@ -302,8 +259,8 @@ void calcularTamanhoByteLista(TNO *inicio) {
   }
 
   printf("\n************************************************\n");
-  printf(" Ponteiro marcadores início e fim = %d baytes. *\n", tamPonteiroMarcador);
-  printf(" A Lista Encadeada................= %d baytes. *\n", tamanhoByteLista);
-  printf(" Total ...........................= %d baytes. *\n", tamPonteiroMarcador + tamanhoByteLista);
+  printf(" Ponteiro marcadores inicio e fim = %d bytes. *\n", tamPonteiroMarcador);
+  printf(" A Lista Encadeada................= %d bytes. *\n", tamanhoByteLista);
+  printf(" Total ...........................= %d bytes. *\n", tamPonteiroMarcador + tamanhoByteLista);
   printf("************************************************\n");
 }
