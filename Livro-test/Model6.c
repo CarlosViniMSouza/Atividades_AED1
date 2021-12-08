@@ -11,6 +11,7 @@ typedef struct Node {
 } pNode;
 
 int resp; // Variavel para o laco while()
+int num; // Variavel para passar os novos numeros na Lista
 
 // Criando os ponteiros 'inicio' e 'proximo' da Lista:
 pNode *pInicio;
@@ -48,13 +49,13 @@ void PassandoElemento() {
   while (1) {
 
     printf("Digite algum valor inteiro: ");
-    scanf("%d", &prox_ponto -> x);
-    printf("Queres continuar? \n1: <SIM> | Outro valor: <NAO> =\n");
+    scanf("%d", &pProximo -> num);
+    printf("Queres continuar? \n<SIM> : 1 | <NAO> : 0 =\n");
     scanf("%d", &resp);
 
     if(resp == 1) {
       // Aqui, a ideia eh alocar os novos elementos no comeco da lista:
-      pProximo -> prox = (t_ponto *) malloc(sizeof(pNode));
+      pProximo -> prox = (pNode *) malloc(sizeof(pNode));
       pProximo = pProximo -> prox;
     } else {
       break;
@@ -64,4 +65,13 @@ void PassandoElemento() {
   // Por fim, o trecho que fecha a lista:
   pProximo -> prox = NULL;
   pProximo = pInicio;
+}
+
+void ExibirLista() {
+  // Agora, basta apresentarmos os elementos:
+  printf("A lista: \n");
+  while (pProximo != NULL) {
+    printf("\n %d", pProximo -> num);
+    pProximo = pProximo -> prox;
+  }
 }
