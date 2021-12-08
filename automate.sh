@@ -1,6 +1,6 @@
-cd Atividades #acessar o diretorio necessario
+cd Livro-test #acessar o diretorio necessario
 
-gcc Atividade07.c -o aula #fazer a compilacao do arquivo '.c'
+gcc Model6.c -o aula #fazer a compilacao do arquivo '.c'
 
 ./aula #chamar o executavel
 
