@@ -1,5 +1,5 @@
 /*
-Assunto: Lista Encadeada Simples
+Assunto: Pilha
 */
 
 #include <stdio.h>
@@ -21,9 +21,7 @@ typedef struct NO {
 
 void inicializar(TNO **inicio,TNO **fim);
 void inseriFim(TNO **inicio,TNO **fim);
-void inseriInicio(TNO **inicio,TNO **fim);
 void removeFim(TNO **inicio,TNO **fim);
-void removeInicio(TNO **inicio,TNO **fim);
 void removerTodos(TNO **inicio,TNO **fim);
 void exibirLista(TNO *inicio);
 void calcularTamanhoByteLista(TNO *inicio);
@@ -57,18 +55,14 @@ void menu(){
      case 1:
        inseriFim(&inicio, &fim); break;
      case 2:
-       inseriInicio(&inicio, &fim); break;
-     case 3:
        exibirLista(inicio); break;
-     case 4:
+     case 3:
        removeFim(&inicio, &fim); break;
-     case 5:
-       removeInicio(&inicio, &fim); break;
-     case 6:
+     case 4:
        removerTodos(&inicio,&fim); break;
-     case 7:
+     case 5:
        calcularTamanhoByteLista(inicio); break;
-     case 8:
+     case 6:
        // Para sair do programa deve-se desalocar toda memória alocada.
        removerTodos(&inicio,&fim);
        printf("\n\n***************************");
@@ -97,13 +91,11 @@ int ObterOpcaoMenu() {
   printf("*             Menu                 *\n");
   printf("************************************\n");
   printf("* [1] - Inserir no fim             *\n");
-  printf("* [2] - Inserir no início          *\n");
-  printf("* [3] - Listar elementos           *\n");
-  printf("* [4] - Remover ultimo elemento    *\n");
-  printf("* [5] - Remover primeiro elemento  *\n");
-  printf("* [6] - Remover todos os elementos *\n");
-  printf("* [7] - Tamanho em bytes da lista  *\n");
-  printf("* [8] - Sair                       *\n");
+  printf("* [2] - Listar elementos           *\n");
+  printf("* [3] - Remover ultimo elemento    *\n");
+  printf("* [4] - Remover todos os elementos *\n");
+  printf("* [5] - Tamanho em bytes da lista  *\n");
+  printf("* [6] - Sair                       *\n");
   printf("************************************\n");
 
   printf("Entre com a opcao = ");
@@ -152,37 +144,6 @@ void inseriFim(TNO **inicio,TNO **fim) {
   }
 }
 
-// Inseri um novo elemento no início da Lista:
-void inseriInicio(TNO **inicio,TNO **fim) {
-
- int elemento;
- // Declarar novo NO
- TNO* novoNO;
-
- // Entrada do novo elemento
- printf("Novo Elemento = ");
- scanf("%d",&elemento);
-
- // Alocar memória dinamicamente
- novoNO = (TNO*) malloc(sizeof(TNO));
-
- // Verificar SE é o primeiro elemento da Lista Encadeada Simples
- if( *inicio==NULL){
-
-    // Primeiro elemento da Lista Endadeada, o ponteiro do início e do fim apontam para o mesmo elemento.
-    novoNO -> numero  = elemento;
-    novoNO -> proximo = NULL;
-    *inicio = novoNO;
-    *fim    = novoNO;
-  } else {
-
-    // Já existe elemento na lista, inseri no início:
-    novoNO -> numero  = elemento;
-    novoNO -> proximo = *inicio;
-    *inicio = novoNO;
-  }
-}
-
 // Remove o elemento do fim da lista
 void removeFim(TNO **inicio,TNO **fim){
 
@@ -225,41 +186,6 @@ void removeFim(TNO **inicio,TNO **fim){
 
       // Remove NO e libera memória
       free(ultimoNO);
-    }
-  }
-}
-
-// Remove o primeiro elemento da Lista
-void removeInicio(TNO **inicio,TNO **fim) {
-
-  TNO *removerNO = NULL;
-
-  if(*inicio == NULL){
-
-    // Lista está fazia.
-    printf("\n\n*************************");
-    printf("\n** Lista está vazia... **");
-    printf("\n*************************\n");
-  } else {
-
-   // Verificar SE existe apenas um elemento na lista
-   if (*inicio == *fim) {
-
-      // A lista só tem um elemento
-      removerNO = *inicio;
-      *inicio = NULL;
-      *fim    = NULL;
-
-      // Remove NO e libera memória
-      free(removerNO);
-    } else {
-
-     // A lista tem mais de um elemento
-     removerNO = *inicio;
-     *inicio   = (*inicio)->proximo;
-
-     // Remove NO e libera memória
-     free(removerNO);
     }
   }
 }

@@ -1,6 +1,6 @@
-cd Livro-test #acessar o diretorio necessario
+cd programas-teste #acessar o diretorio necessario
 
-gcc Model6.c -o aula #fazer a compilacao do arquivo '.c'
+gcc test_Stack.c -o aula #fazer a compilacao do arquivo '.c'
 
 ./aula #chamar o executavel
 
