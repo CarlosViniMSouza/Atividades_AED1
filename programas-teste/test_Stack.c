@@ -86,9 +86,9 @@ int ObterOpcaoMenu() {
 
   printf("\n");
   printf("************************************\n");
-  printf("*    Lista Encadeada Simples       *\n");
+  printf("*             Pilha                *\n");
   printf("************************************\n");
-  printf("*             Menu                 *\n");
+  printf("*              Menu                *\n");
   printf("************************************\n");
   printf("* [1] - Inserir no fim             *\n");
   printf("* [2] - Listar elementos           *\n");
@@ -266,8 +266,8 @@ void calcularTamanhoByteLista(TNO *inicio) {
   }
 
   printf("\n************************************************\n");
-  printf(" Ponteiro marcadores início e fim = %d baytes. *\n", tamPonteiroMarcador);
-  printf(" A Lista Encadeada................= %d baytes. *\n", tamanhoByteLista);
-  printf(" Total ...........................= %d baytes. *\n", tamPonteiroMarcador + tamanhoByteLista);
+  printf(" Ponteiro marcadores inicio e fim = %d bytes. *\n", tamPonteiroMarcador);
+  printf(" A Lista Encadeada................= %d bytes. *\n", tamanhoByteLista);
+  printf(" Total ...........................= %d bytes. *\n", tamPonteiroMarcador + tamanhoByteLista);
   printf("************************************************\n");
 }
