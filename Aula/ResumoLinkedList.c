@@ -102,41 +102,46 @@ E pronto. A lista continua ligada, mas sem o elemento 'atual', na qual retornamo
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node{
- int num;
- struct Node *prox;
-};
-typedef struct Node node;
+typedef struct Node {
+
+  int num;
+  struct Node *prox;
+} node;
 
 int tam;
 
 int menu(void);
+
 void inicia(node *PILHA);
 void opcao(node *PILHA, int op);
 void exibe(node *PILHA);
 void libera(node *PILHA);
 void push(node *PILHA);
+
 node *pop(node *PILHA);
 
 
-int main(void)
-{
- node *PILHA = (node *) malloc(sizeof(node));
- if(!PILHA){
-  printf("Sem memoria disponivel!\n");
-  exit(1);
- }else{
- inicia(PILHA);
- int opt;
+int main(void) {
 
- do{
-  opt=menu();
-  opcao(PILHA,opt);
- }while(opt);
+  node *PILHA = (node *) malloc(sizeof(node));
+  if(!PILHA) {
 
- free(PILHA);
- return 0;
- }
+    printf("Sem memoria disponivel!\n");
+    exit(1);
+  } else {
+
+    inicia(PILHA);
+    int opt;
+
+    do {
+
+      opt=menu();
+      opcao(PILHA,opt);
+    } while(opt);
+
+    free(PILHA);
+    return 0;
+  }
 }
 
 void inicia(node *PILHA)
@@ -145,51 +150,52 @@ void inicia(node *PILHA)
  tam=0;
 }
 
-int menu(void)
-{
- int opt;
+int menu(void) {
 
- printf("Escolha a opcao\n");
- printf("0. Sair\n");
- printf("1. Zerar PILHA\n");
- printf("2. Exibir PILHA\n");
- printf("3. PUSH\n");
- printf("4. POP\n");
- printf("Opcao: "); scanf("%d", &opt);
+  int opt;
 
- return opt;
+  printf("Escolha a opcao\n");
+  printf("0. Sair\n");
+  printf("1. Zerar PILHA\n");
+  printf("2. Exibir PILHA\n");
+  printf("3. PUSH\n");
+  printf("4. POP\n");
+  printf("Opcao: "); scanf("%d", &opt);
+
+  return opt;
 }
 
-void opcao(node *PILHA, int op)
-{
- node *tmp;
- switch(op){
-  case 0:
-   libera(PILHA);
-   break;
+void opcao(node *PILHA, int op) {
 
-  case 1:
-   libera(PILHA);
-   inicia(PILHA);
-   break;
+  node *tmp;
+  switch(op){
+    case 0:
+      libera(PILHA);
+      break;
 
-  case 2:
-   exibe(PILHA);
-   break;
+    case 1:
+      libera(PILHA);
+      inicia(PILHA);
+      break;
 
-  case 3:
-   push(PILHA);
-   break;
+    case 2:
+      exibe(PILHA);
+      break;
 
-  case 4:
-   tmp= pop(PILHA);
-   if(tmp != NULL)
-   printf("Retirado: %3d\n\n", tmp->num);
-   break;
+    case 3:
+      push(PILHA);
+      break;
 
-  default:
-   printf("Comando invalido\n\n");
- }
+    case 4:
+      tmp= pop(PILHA);
+      if(tmp != NULL) {
+        printf("Retirado: %3d\n\n", tmp->num);
+      }
+      break;
+
+    default:
+      printf("Comando invalido\n\n");
+  }
 }
 
 int vazia(node *PILHA)
@@ -292,3 +298,23 @@ node *pop(node *PILHA)
   return ultimo;
  }
 }
+
+/*
+
+--> Considerações sobre a Estrutura de Dados Dinâmica Pilha:
+
+A ideia por trás da estrutura de dados do tipo pilha é simples: o último elemento a entrar, é sempre o primeiro a sair.
+
+Existem zilhões de maneiras de se programar uma pilha.
+
+Fizemos apenas uma, que criamos e achamos que é didaticamente interessante de se aprender
+
+Por exemplo, fizemos uma que possui apenas um elemento fixo, o ponteiro *PILHA, que aponta para a base da pilha. Tente fazer um com o ponteiro *top, que aponta para o topo (final da pilha).
+
+Se tiver estudado nosso Tutorial Sobre Listas Encadeadas em C vai entender bem melhor tudo que foi explicado neste tutorial, e vai notar que uma pilha é uma lista onde os só podemos inserir elementos no fim da lista e só podemos retirar elementos do fim também.
+
+Ou seja, uma pilha é uma lista também, mas uma lista mais simples, onde só usamos o final dela.
+
+Mais importante que ter todos esses códigos e implementações em C em mente, é ter essas ideias, essa lógica da coisa, de como funciona.
+
+*/
