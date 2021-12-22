@@ -70,3 +70,31 @@ Pronto. Já podemos colocar um nó no início, no fim ou em qualquer lugar de no
 Vamos para o próximo passo: retirar elementos de nossa lista.
 
 */
+
+/*
+
+--> Como retirar estruturas de uma lista:
+
+Se já leu todos nossos tutoriais sobre listas em C, certamente já deve ter em mente como implementar um algoritmo que retire um elemento.
+
+Vamos usar exatamente a mesma ideia que usamos na parte passada do tutorial, para achar os elementos 'atual' (que vamos excluir) e o anterior a ele.
+
+Ou seja, aquele mesmo laço while será usado, da mesma maneira.
+
+Porém, não vamos precisar de um novo nó, afinal não vamos adicionar nada, e sim retirar a struct apontada pelo ponteiro 'atual'.
+
+E como vimos diversas, o ato de 'retirar' um nó de uma lista é simplesmente deixar de apontar algum elemento da lista para ele.
+
+Quem aponta para o elemento que queremos retirar é: anterior -> prox
+
+Qual elemento que vem após o elemento que vamos retirar: atual -> prox
+
+Elemento retirado, que devemos retornar da função: atual
+
+Ou seja, para excluir, basta apontarmos o elemento anterior ao que queremos retirar, para aquele elemento que vem DEPOIS do que queremos retirar.
+
+Isso é feito da seguinte maneira: anterior -> prox = atual -> prox
+
+E pronto. A lista continua ligada, mas sem o elemento 'atual', na qual retornamos, sem antes decrementar a variável tam, já que retiramos uma estrutura da lista.
+
+*/
